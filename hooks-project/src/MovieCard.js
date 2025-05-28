@@ -1,34 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import "./MovieCard.css";
 
-const MovieCard = ({ movie, id }) => {
-  const navigate = useNavigate();
+const MovieCard = ({ movie }) => {
+  const [showDescription, setShowDescription] = useState(false);
 
-  if (!movie) {
-    return <div>Loading...</div>; // Ou un message d'erreur approprié
-  }
-
-  const handleClick = () => {
-    navigate(`/movie/${id}`);
-  };
+  if (!movie) return <div>Loading...</div>;
 
   return (
-    <Card className="movie-card">
+    <Card className={`movie-card mb-4 ${showDescription ? "expanded" : ""}`}>
       <Card.Img
         className="poster"
         variant="top"
         src={movie.posterURL}
         alt={`${movie.title} Poster`}
       />
-      <Card.Body>
+      <Card.Body className="text-center">
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>
           Rating:{" "}
           <span style={{ color: "rgb(0, 221, 255)" }}>{movie.rating}</span>/10
         </Card.Text>
-        <Button variant="primary" onClick={handleClick}>
-          Voir plus
+
+        {showDescription && (
+          <Card.Text className="mt-2">{movie.description}</Card.Text>
+        )}
+
+        <Button
+          variant="primary"
+          onClick={() => setShowDescription(!showDescription)}
+        >
+          {showDescription ? "Masquer" : "Voir plus"}
         </Button>
       </Card.Body>
     </Card>

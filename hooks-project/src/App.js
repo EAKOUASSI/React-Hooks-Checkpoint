@@ -1,6 +1,6 @@
 // src/App.js
 import "./App.css";
-import CustomNavbar from "./CustomNavbar"; // importation le composant Navbar
+import CustomNavbar from "./Navbar"; // importation le composant Navbar
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,7 +18,7 @@ import CrazyDad from "./Images/CrazyDad.jpg";
 const App = () => {
   const [movies, setMovies] = useState([
     {
-      title: "Black Panther II",
+      title: "WAKANDA II",
       description: "Shuri saura-t-elle assumer l'héritage de Tchala ?",
       posterURL: BlackPanther,
       rating: 6.5,

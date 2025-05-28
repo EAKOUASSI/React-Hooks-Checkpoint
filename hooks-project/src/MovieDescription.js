@@ -1,18 +1,12 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
 
-const MovieDescription = ({ movies }) => {
-  const { id } = useParams();
-  const movie = movies[id];
-
-  if (!movie) {
-    return <div>Film non trouvé</div>;
-  }
+const MovieDescription = ({ movie, onBack }) => {
+  if (!movie) return <div>Film non trouvé</div>;
 
   return (
-    <div style={{ fontFamily: "Roboto serif" }}>
+    <div style={{ fontFamily: "Roboto serif", padding: "1rem" }}>
       <h1>{movie.title}</h1>
-      <p>{movie.description}</p>
+      <p style={{ height: "150px", overflowY: "auto" }}>{movie.description}</p>
       <iframe
         width="560"
         height="315"
@@ -23,9 +17,9 @@ const MovieDescription = ({ movies }) => {
         allowFullScreen
       ></iframe>
       <br />
-      <Link style={{ textDecoration: "none" }} to="/">
+      <button onClick={onBack} style={{ marginTop: "1rem" }}>
         Retour à l'accueil
-      </Link>
+      </button>
     </div>
   );
 };

@@ -1,0 +1,17 @@
+.movie-card {
+  transition: all 0.4s ease;
+  overflow: hidden;
+  height: 400px; /* taille normale par défaut */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.movie-card.expanded {
+  height: 550px; /* s’agrandit quand description affichée */
+}
+
+.mt-2 card-text {
+  height: 70px;
+}
